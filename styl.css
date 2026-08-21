@@ -1,0 +1,158 @@
+/* Karczma pod Kasztanem — układ z boczną kolumną, bez paska u góry */
+
+:root{
+  --sadza:#17130f;
+  --wegiel:#241d17;
+  --kreda:#f3efe6;
+  --kreda-ciemna:#e6e0d2;
+  --miod:#d2952a;
+  --wisnia:#7d2430;
+  --szept:#8a8175;
+  --linia:#d5cec0;
+  --linia-ciemna:#3a3129;
+
+  --display:"Zilla Slab",Georgia,serif;
+  --tekst:"Inter",system-ui,-apple-system,sans-serif;
+
+  --bok:302px;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--kreda);color:var(--sadza);
+  font-family:var(--tekst);font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;letter-spacing:-.01em}
+:focus-visible{outline:3px solid var(--miod);outline-offset:3px}
+[id]{scroll-margin-top:28px}
+
+/* ---------- boczna kolumna ---------- */
+.bok{
+  position:fixed;top:0;left:0;width:var(--bok);height:100vh;
+  background:var(--sadza);color:var(--kreda);
+  padding:34px 28px;display:flex;flex-direction:column;gap:26px;overflow-y:auto;z-index:20;
+}
+.marka{font-family:var(--display);font-size:1.58rem;line-height:1.14;text-decoration:none}
+.marka em{display:block;font:400 .66rem/1 var(--tekst);font-style:normal;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--miod);margin-top:9px}
+.bok nav{display:grid;gap:2px}
+.bok nav a{text-decoration:none;color:#cdc4b6;font-size:.94rem;padding:7px 0;
+  border-bottom:1px solid var(--linia-ciemna)}
+.bok nav a:hover{color:var(--miod)}
+.godziny{font-size:.86rem;color:#b4aa9b}
+.godziny b{display:block;font:700 .64rem/1 var(--tekst);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--miod);margin-bottom:9px}
+.godziny div{display:flex;justify-content:space-between;gap:10px;padding:3px 0}
+.zacheta{margin:auto 0 12px;font-size:.82rem;line-height:1.5;color:#b4aa9b}
+.bok .dzwon{
+  display:block;text-align:center;text-decoration:none;font-weight:700;
+  background:var(--miod);color:var(--sadza);padding:13px 10px;font-size:.98rem;white-space:nowrap}
+.bok .dzwon:hover{background:#e0a338}
+.bok .stopka{font-size:.74rem;color:#7c7266;line-height:1.5}
+
+/* ---------- treść ---------- */
+.tresc{margin-left:var(--bok)}
+.owijka{width:min(940px,100% - 72px);margin-inline:auto}
+.blok{padding:clamp(48px,6vw,84px) 0}
+.blok-ciemny{background:var(--wegiel);color:var(--kreda)}
+.tresc > section:last-child{min-height:100vh;display:flex;align-items:center}
+.tresc > section:last-child > .owijka{width:min(940px,100% - 72px)}
+.nadpis{font:700 .68rem/1 var(--tekst);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--wisnia);margin-bottom:16px}
+.blok-ciemny .nadpis{color:var(--miod)}
+.tytul{font-size:clamp(1.75rem,3.4vw,2.7rem);line-height:1.1;max-width:22ch}
+.wstep{color:var(--szept);max-width:58ch;margin-top:12px}
+.blok-ciemny .wstep{color:#b4aa9b}
+
+/* ---------- pas otwierający (niski, nie na cały ekran) ---------- */
+.pas{position:relative;height:min(52vh,430px);overflow:hidden;background:var(--wegiel)}
+.pas img{width:100%;height:100%;object-fit:cover;object-position:62% 55%}
+.pas:after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(23,19,15,.25),rgba(23,19,15,.85))}
+.pas-tresc{position:absolute;left:0;right:0;bottom:0;z-index:2;padding-bottom:30px;color:#fff}
+.pas h1{font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.05;max-width:17ch}
+.pas p{max-width:46ch;color:#ded6c8;margin:12px 0 0}
+
+/* ---------- tablica dnia ---------- */
+.tablica{background:#20302a;color:#eef1e9;border:10px solid #4a3a26;padding:clamp(22px,3.5vw,40px);
+  margin-top:32px}
+.dni{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:26px}
+.dzien{background:none;border:0;border-bottom:2px solid rgba(255,255,255,.2);color:#b9c4b4;
+  font:700 .74rem/1 var(--tekst);letter-spacing:.1em;text-transform:uppercase;
+  padding:11px 2px;cursor:pointer}
+.dzien:hover{color:#fff}
+.dzien[aria-pressed="true"]{color:var(--miod);border-bottom-color:var(--miod)}
+.danie{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:baseline;
+  padding:13px 0;border-bottom:1px dashed rgba(255,255,255,.16)}
+.danie:last-child{border-bottom:0}
+.danie h3{font-size:1.22rem;font-weight:500}
+.danie small{display:block;color:#a4b09f;font-family:var(--tekst);font-size:.87rem;margin-top:3px}
+.danie b{font-family:var(--display);font-size:1.2rem;white-space:nowrap;color:var(--miod)}
+.tablica-stopka{margin-top:22px;font-size:.85rem;color:#9aa694}
+
+/* ---------- karta ---------- */
+.karta{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(30px,5vw,60px);margin-top:32px}
+.grupa{break-inside:avoid;margin-bottom:34px}
+.grupa h3{font-size:.72rem;font-family:var(--tekst);font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--wisnia);padding-bottom:9px;border-bottom:2px solid var(--linia)}
+.pozycja{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;padding:10px 0;
+  border-bottom:1px solid var(--linia)}
+.pozycja span{font-size:.97rem}
+.pozycja small{display:block;color:var(--szept);font-size:.83rem}
+.pozycja b{font-family:var(--display);font-weight:600;white-space:nowrap}
+
+/* ---------- zdjęcia ---------- */
+.ph{position:relative;overflow:hidden;background:var(--kreda-ciemna)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph.brak{background:repeating-linear-gradient(45deg,#ddd6c6 0 10px,#d6cfbe 10px 20px)}
+.ph.brak:after{content:attr(data-opis);position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:center;text-align:center;padding:14px;
+  font:700 .72rem/1.45 var(--tekst);letter-spacing:.1em;text-transform:uppercase;color:#6d6455}
+.ph.brak img{display:none}
+
+.trojka{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+.trojka .ph{aspect-ratio:1}
+.para{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,52px);align-items:start}
+.para > div > p:last-child{margin-bottom:0}
+.para .ph{aspect-ratio:4/3}
+.podpis{font-size:.81rem;color:var(--szept);margin-top:9px}
+
+/* ---------- sala ---------- */
+.fakty{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linia-ciemna);
+  margin-top:34px;border:1px solid var(--linia-ciemna)}
+.fakt{background:var(--wegiel);padding:22px}
+.fakt b{display:block;font-family:var(--display);font-size:1.9rem;color:var(--miod);line-height:1}
+.fakt span{display:block;font-size:.86rem;color:#b4aa9b;margin-top:7px}
+
+/* ---------- kontakt ---------- */
+.dane{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:32px}
+.dane div{border-top:2px solid var(--linia);padding-top:13px}
+.dane dt{font:700 .66rem/1 var(--tekst);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--szept);margin-bottom:7px}
+.dane dd{margin:0;font-size:1.08rem}
+.dane a{text-decoration:none;border-bottom:2px solid var(--miod)}
+.btn{display:inline-block;margin:18px 0 4px;background:var(--wisnia);color:#fff;text-decoration:none;
+  font-weight:700;padding:14px 26px;white-space:nowrap}
+.btn:hover{background:#962b39}
+
+/* ---------- telefon i tablet ---------- */
+@media(max-width:900px){
+  .bok{position:static;width:auto;height:auto;flex-direction:row;flex-wrap:wrap;
+    align-items:center;gap:14px 20px;padding:18px 22px}
+  .marka{font-size:1.35rem}
+  .bok nav{grid-auto-flow:column;grid-template-columns:none;gap:16px;order:3;width:100%;
+    overflow-x:auto;padding-bottom:4px}
+  .bok nav a{border-bottom:0;white-space:nowrap;font-size:.88rem}
+  .godziny,.zacheta{display:none}
+  .bok .dzwon{margin-left:auto;margin-top:0;padding:10px 16px;font-size:.92rem}
+  .bok .stopka{display:none}
+  .tresc{margin-left:0}
+  .owijka{width:calc(100% - 44px)}
+  .karta,.para,.fakty,.dane{grid-template-columns:1fr}
+  .fakty{gap:1px}
+  .pas{height:min(46vh,340px)}
+  .tresc > section:last-child{min-height:0;display:block}
+  .dni{grid-template-columns:repeat(4,1fr)}
+  .trojka{grid-template-columns:1fr;max-width:420px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
