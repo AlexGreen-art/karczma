@@ -156,3 +156,10 @@ h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;letter-spacing:-.01
   .trojka{grid-template-columns:1fr;max-width:420px}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+
+/* --- akcja przy pozycji oferty (27.09.2026) --- */
+.akcja{display:inline-block;margin-top:14px;white-space:nowrap;font-size:.8rem;font-weight:600;
+  letter-spacing:.02em;text-decoration:none;color:inherit;border:1px solid currentColor;
+  border-radius:999px;padding:8px 14px;opacity:.72;transition:opacity .15s}
+.akcja:hover,.akcja:focus-visible{opacity:1}
